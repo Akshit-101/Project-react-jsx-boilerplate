@@ -1,30 +1,29 @@
 import { Component } from "react";
-import "./App.css"
-import elephant from "./images/elephant.jpeg";
+import "./App.css";
+import ElephantImage from "./images/elephant.jpeg";
 
-export default class AppClass extends Component{
-  
-  imageData = ()=>{
+export default class ImageGallery extends Component {
+  imageData = () => {
     let data = [
-      {
-        id:1,
-        img:elephant
-      },
-      {
-        id:2,
-        img:elephant
-      },
-      {
-        id:3,
-        img:elephant
-      },
-      {
-        id:4,
-        img:elephant
-      }
-    ]
+      { id: 1, img: ElephantImage },
+      { id: 2, img: ElephantImage },
+      { id: 3, img: ElephantImage },
+      { id: 4, img: ElephantImage }
+    ];
     return data;
-  }
+  };
 
-  // code here
+  render() {
+    const imgData = this.imageData();
+    return (
+      <>
+        <h1>Elephant Gallery</h1>
+        <div className="image-container">
+          {imgData.map((item) => (
+            <img src={item.img} key={item.id} className="gallery-img" alt="images" />
+          ))}
+        </div>
+      </>
+    );
+  }
 }
